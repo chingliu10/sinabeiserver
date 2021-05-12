@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+{{>sidenav}}
+<div class="main" > 
+    <div class="banner">
+        <div class="formWrapper">
+            <div class="formHeader">
+                <h3>Create product</h3>
+            </div>
+            <form action="">
+                <div class="formGroup divide">
+                    <label >Product Name</label>
+                    <input type="text"  maxlength="30" minlength="4">
+                </div>
+                <div class="formGroup">
+                    <label>Product Description</label>
+                    <textarea></textarea>
+                </div>
+                <div class="formGroup divide2">
+                    <div class="unitPrice">
+                        <div class="formGroup divide3">
+                            <label>Unit Price</label>
+                            <input type="text" value="0">
+                        </div>
+                    </div>
+                    <div class="discount">
+                        <div class="formGroup divide3">
+                            <label>Discount</label>
+                             <input type="text" value="0"> 
+                        </div>  
+                    </div>
+                    <div class="quantity">
+                        <div class="formGroup divide3">
+                            <label>Quantity</label>
+                             <input type="text" value="0"> 
+                        </div>  
+                    </div>
+                </div>
+                <div class="defineProps">
+                    <div class="formGroup">
+                        <label>Add Properties</label>
+                        <input type="checkbox" value="color" class="squize">
+                        <labe>Color</labe>
+                        <input type="checkbox" value="size" class="squize">
+                        <labe>Size</label>
+                    </div>
+                </div>
+
+                <div class="properties">
+                </div>
+                <input type="submit" value="Create Product">
+            </form>
+        </div>
+    </div>
+
+</div>
+    <script src="/js/script.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

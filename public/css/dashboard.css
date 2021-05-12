@@ -1,0 +1,74 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.main {
+    height: 100vh;
+    padding: 0;
+}
+
+.formHeader{
+    border-bottom: 1px solid gray;
+}
+.formWrapper {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+}
+
+.divide {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.formGroup {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+textarea, input {
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.divide2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: whitesmoke;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.divide3 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    box-sizing: border-box;
+}
+
+.discount {
+    margin: 0 5px;
+}
+
+.squize{
+    margin-left: 50px;
+    height: 30px;
+    width: 30px;
+}
+
+.properties{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.propEdit{
+    border: 2px solid tomato;
+    padding: 5px;
+}
