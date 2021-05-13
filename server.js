@@ -12,7 +12,7 @@ hbs.registerPartials(__dirname + "/views/partials")
 app.use("/", home)
 app.use("/admin", admin)
 app.use("/dashboard", dashboard)
-let port = 3000
+let port = 80
 
 app.listen(port , () => {
     console.log("listenning from sinabei servers")
