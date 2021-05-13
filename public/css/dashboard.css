@@ -72,3 +72,9 @@ textarea, input {
     border: 2px solid tomato;
     padding: 5px;
 }
+
+.printProps {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
