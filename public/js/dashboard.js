@@ -160,3 +160,29 @@ function createMegaArray(x, y) {
     printProperties(megaArray)
 
 }
+
+
+
+//file upload
+
+document.querySelector(".uploadFile").addEventListener("click", function(e) {
+    e.preventDefault()
+    document.querySelector(".uploadButton").click()
+})
+
+document.querySelector(".uploadButton").addEventListener("change", function (e) {
+    console.log("file has being added")
+    var file = this.files[0]
+    let form = document.querySelector(".uploadForm")
+    let formData = new FormData()
+    formData.append("imageUpload", file)
+    fetch(`/dashboard/upload`, {
+        method : "post",
+        body: formData
+    })
+    .then((res) => res.json())
+    .then((out) => {
+        console.log(out)
+    })
+})
+

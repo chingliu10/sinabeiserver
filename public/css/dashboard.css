@@ -78,3 +78,17 @@ textarea, input {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
+
+/*files here please*/
+.fileUploads{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    border: 2px dashed tomato;
+    height: 300px;
+    width: 100%;
+}
+.formFileUpload{
+    display: none;
+}
