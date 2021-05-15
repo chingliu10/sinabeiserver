@@ -176,13 +176,55 @@ document.querySelector(".uploadButton").addEventListener("change", function (e) 
     let form = document.querySelector(".uploadForm")
     let formData = new FormData()
     formData.append("imageUpload", file)
+    //loading effect should be here
+    createTempDiv()
     fetch(`/dashboard/upload`, {
         method : "post",
         body: formData
     })
     .then((res) => res.json())
     .then((out) => {
-        console.log(out)
+        //loading effect should end here
+        let filePath = out.data.path
+        console.log(filePath)
+        renderTheUploadedImage(filePath.slice(6, filePath.length))
     })
 })
 
+let imageGallery = document.querySelector(".imageGallery")
+function renderTheUploadedImage (imgUrl) {
+    document.querySelector(".loading").remove()
+    let div = document.createElement("div")
+    imageGallery.appendChild(div)
+    console.log(imgUrl)
+    div.innerHTML = `
+        <div class="imgUploadWrapper">
+            <span class="deleteImage" onClick="deleteImage(event)" data-url=${imgUrl}>x</span>
+            <img src="${imgUrl}" class="actualImage">
+        </div>
+    `
+
+}
+
+function createTempDiv() {
+    div = document.createElement("div")
+    imageGallery.appendChild(div)
+    div.setAttribute("class", "loading image")
+    div.textContent = "Uploading Image..."
+}
+
+
+
+function deleteImage(el) {
+
+    let imageUrl = el.target.getAttribute("data-url")
+
+    fetch(`/dashboard/deleteimage/{${imageUrl}}`)
+    .then(response => response.text())
+    .then((out) =>{
+        let removeDiv = el.target.parentElement.parentElement.remove()
+        console.log(out)
+    })
+   
+
+}

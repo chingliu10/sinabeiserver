@@ -2,6 +2,7 @@ const express = require("express")
 let router = express.Router()
 let multer = require("multer")
 const path = require("path")
+const fs = require("fs")
 
 let storage = multer.diskStorage({
     destination : function (req, file, cb) {
@@ -17,10 +18,24 @@ router.get("/", (req, res) => {
     res.render("dashboard")
 })
 
-router.post("/upload", upload.single("imageUpload"), function (req, res, next) {
-    console.log("requested file is")
-    console.log(req.file)
-    res.json({data : req.file})
+router.post("/upload", upload.single("imageUpload"), function (req, res) {
+    res.json({data : req.file.path})
+})
+
+
+router.post("/deleteimage/:address", (req, res) => {
+    let imgurl = req.params
+    console.log(__dirname)
+    console.log(__dirname + "/public/" + imgurl.address)
+    res.send("img deleted")
+    // fs.unlink('file.txt', (err) => {
+    //     if (err) {
+    //         throw err;
+    //     }
+    
+    //     res.send("file has being deleted")
+    // })
+
 })
 
 module.exports = router
