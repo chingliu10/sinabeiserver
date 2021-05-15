@@ -178,7 +178,7 @@ document.querySelector(".uploadButton").addEventListener("change", function (e) 
     formData.append("imageUpload", file)
     //loading effect should be here
     createTempDiv()
-    fetch(`/dashboard/upload`, {
+    fetch(`http://208.117.86.203/dashboard/upload`, {
         method : "post",
         body: formData
     })
@@ -222,7 +222,7 @@ function deleteImage(el) {
     fetch(`/dashboard/deleteimage/{${imageUrl.slice(7, imageUrl.length)}}`)
     .then(response => response.text())
     .then((out) =>{
-        let removeDiv = el.target.parentElement.parentElement.remove()
+        // let removeDiv = el.target.parentElement.parentElement.remove()
         console.log(out)
     })
    
