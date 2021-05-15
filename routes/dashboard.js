@@ -26,7 +26,7 @@ router.post("/upload", upload.single("imageUpload"), function (req, res) {
 router.get("/deleteimage/:a", (req, res) => {
     let imgUrl = req.params.a
     
-    fs.unlink(`../public/images/${imgUrl}`, (err) => {
+    fs.unlink(`/home/chingliu/sinabeiserver/public/images/${imgUrl}`, (err) => {
         if (err) {
             throw err;
         }
