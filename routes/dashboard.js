@@ -23,7 +23,7 @@ router.post("/upload", upload.single("imageUpload"), function (req, res) {
 })
 
 
-router.post("/deleteimage/:address", (req, res) => {
+router.get("/deleteimage/:address", (req, res) => {
     let imgurl = req.params
     console.log(__dirname)
     console.log(__dirname + "/public/" + imgurl.address)
