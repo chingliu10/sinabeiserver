@@ -25,7 +25,7 @@ router.post("/upload", upload.single("imageUpload"), function (req, res) {
 
 router.get("/deleteimage/:a", (req, res) => {
     let imgUrl = req.params.a
-    res.send("img deleted")
+    
     fs.unlink(`../public/images/${imgUrl}`, (err) => {
         if (err) {
             throw err;
