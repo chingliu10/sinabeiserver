@@ -219,7 +219,7 @@ function deleteImage(el) {
 
     let imageUrl = el.target.getAttribute("data-url")
 
-    fetch(`/dashboard/deleteimage/{${imageUrl}}`)
+    fetch(`/dashboard/deleteimage/{${imageUrl.slice(7, imageUrl.length)}}`)
     .then(response => response.text())
     .then((out) =>{
         let removeDiv = el.target.parentElement.parentElement.remove()

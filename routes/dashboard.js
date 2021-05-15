@@ -27,6 +27,16 @@ router.get("/deleteimage/:address", (req, res) => {
     let imgurl = req.params
     console.log(__dirname)
     console.log(__dirname + "/public/" + imgurl.address)
+    console.log("image url is " + imgurl)
+
+    fs.readFile('/public/images', 'utf8' , (err, data) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        console.log(data)
+    })
+
     res.send("img deleted")
     // fs.unlink('file.txt', (err) => {
     //     if (err) {
