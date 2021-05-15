@@ -199,7 +199,7 @@ function renderTheUploadedImage (imgUrl) {
     console.log(imgUrl)
     div.innerHTML = `
         <div class="imgUploadWrapper">
-            <span class="deleteImage" onClick="deleteImage(event)" data-url=${imgUrl}>x</span>
+            <span class="deleteImage" onClick="deleteImage(event)">x</span>
             <img src="${imgUrl}" class="actualImage">
         </div>
     `
@@ -217,9 +217,9 @@ function createTempDiv() {
 
 function deleteImage(el) {
 
-    let imageUrl = el.target.getAttribute("data-url")
+    let imageUrl = el.target.parentElement.children[1]
     console.log(imageUrl)
-    console.log(`/dashboard/deleteimage/${imageUrl.slice(7, imageUrl.length)}`)
+    console.log(`/dashboard/deleteimage${imageUrl.slice(7, imageUrl.length)}`)
     // fetch(`/dashboard/deleteimage/{${imageUrl.slice(7, imageUrl.length)}}`)
     // .then(response => response.text())
     // .then((out) =>{
