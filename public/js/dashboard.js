@@ -185,9 +185,9 @@ document.querySelector(".uploadButton").addEventListener("change", function (e) 
     .then((res) => res.json())
     .then((out) => {
         //loading effect should end here
-        let filePath = out.data.path
+        let filePath = out
         console.log(filePath)
-        renderTheUploadedImage(filePath.slice(6, filePath.length))
+        // renderTheUploadedImage(filePath.slice(6, filePath.length))
     })
 })
 
