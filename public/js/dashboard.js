@@ -219,13 +219,12 @@ function deleteImage(el) {
 
     let imageUrl = el.target.parentElement.children[1].getAttribute("src")
     console.log(imageUrl)
-    console.log(`/dashboard/deleteimage${imageUrl.slice(7, imageUrl.length)}`)
-    // fetch(`/dashboard/deleteimage/{${imageUrl.slice(7, imageUrl.length)}}`)
-    // .then(response => response.text())
-    // .then((out) =>{
-    //     // let removeDiv = el.target.parentElement.parentElement.remove()
-    //     console.log(out)
-    // })
+    fetch(`/dashboard/deleteimage${imageUrl.slice(7, imageUrl.length)}`)
+    .then(response => response.text())
+    .then((out) =>{
+        // let removeDiv = el.target.parentElement.parentElement.remove()
+        console.log(out)
+    })
    
 
 }

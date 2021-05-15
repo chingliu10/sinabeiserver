@@ -24,29 +24,15 @@ router.post("/upload", upload.single("imageUpload"), function (req, res) {
 
 
 router.get("/deleteimage/:a", (req, res) => {
-    let imgurl = req.params
-    console.log(imgurl.a)
-    // console.log(__dirname)
-    // console.log(__dirname + "/public/" + imgurl.address)
-    res.send("fsfsd")
-    // console.log("image url is " + imgurl)
-
-    // fs.readFile('/public/images', 'utf8' , (err, data) => {
-    //     if (err) {
-    //       console.error(err)
-    //       return
-    //     }
-    //     console.log(data)
-    // })
-
-    // res.send("img deleted")
-    // fs.unlink('file.txt', (err) => {
-    //     if (err) {
-    //         throw err;
-    //     }
+    let imgUrl = req.params.a
+    res.send("img deleted")
+    fs.unlink(`../public/images/${imgUrl}`, (err) => {
+        if (err) {
+            throw err;
+        }
     
-    //     res.send("file has being deleted")
-    // })
+        res.send("file has being deleted")
+    })
 
 })
 
