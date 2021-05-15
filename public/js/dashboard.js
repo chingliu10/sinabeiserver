@@ -178,7 +178,7 @@ document.querySelector(".uploadButton").addEventListener("change", function (e) 
     formData.append("imageUpload", file)
     //loading effect should be here
     createTempDiv()
-    fetch(`http://208.117.86.203/dashboard/upload`, {
+    fetch(`/dashboard/upload`, {
         method : "post",
         body: formData
     })
