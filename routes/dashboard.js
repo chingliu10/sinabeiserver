@@ -3,6 +3,8 @@ let router = express.Router()
 let multer = require("multer")
 const path = require("path")
 const fs = require("fs")
+router.use(express.json())
+
 
 let storage = multer.diskStorage({
     destination : function (req, file, cb) {
@@ -12,6 +14,7 @@ let storage = multer.diskStorage({
         cb(null, file.originalname + '_' + Date.now() + path.extname(file.originalname))
     }
 })
+
 let upload = multer({ storage : storage })
 
 router.get("/", (req, res) => {
@@ -35,5 +38,11 @@ router.get("/deleteimage/:a", (req, res) => {
     })
 
 })
+
+router.post("/create", (req, res) =>{
+    console.log(req.body)
+    res.send("product created")
+})
+
 
 module.exports = router

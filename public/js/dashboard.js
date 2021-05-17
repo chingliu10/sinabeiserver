@@ -137,7 +137,7 @@ function printProperties (p) {
         div.innerHTML = `
             <div>
                 <label>${p[z]}</label>
-                <input type="number" value="0">
+                <input type="number" value="0" class="propTotal">
             </div>
         `
     }
@@ -192,11 +192,11 @@ document.querySelector(".uploadButton").addEventListener("change", function (e) 
 })
 
 let imageGallery = document.querySelector(".imageGallery")
+let count = 0
 function renderTheUploadedImage (imgUrl) {
     document.querySelector(".loading").remove()
     let div = document.createElement("div")
     imageGallery.appendChild(div)
-    console.log(imgUrl)
     div.innerHTML = `
         <div class="imgUploadWrapper">
             <span class="deleteImage" onClick="deleteImage(event)">x</span>
@@ -226,5 +226,94 @@ function deleteImage(el) {
         console.log(out)
     })
    
+
+}
+
+//submitting the main form
+document.querySelector(".mainSubmitForm").addEventListener("click", function(event) {
+    event.preventDefault()
+    let mainForm = document.querySelector(".mainForm")
+    let formDetails = new FormData(mainForm)
+    
+    let formData = {}
+    let attributes = getMixings(colors , sizes)
+    let values = getPropValues()
+    let images = getImages()
+    for(let x of formDetails.keys()) {
+        
+        formData[x] = formDetails.get(x)
+    }
+    formData["attributes"] = attributes
+    formData["values"] = values
+    formData["images"] = images
+    //send the main form
+    sendFormData(formData)
+    
+})
+
+
+function getMixings(colors, sizes) {
+    
+    if(colors !== undefined && sizes !== undefined){
+        //create the mixing array
+        return [
+            colors, sizes
+        ]
+    }
+    if(colors !== undefined){
+        //we get only colors
+        return {
+
+            color : colors
+
+        }
+    }
+    if(sizes !== undefined){
+        //we get sizes
+        return  {
+            size : sizes
+        }
+    }
+
+    //else
+    //color is none and size are none
+}
+
+function  getPropValues() {
+    let values = document.querySelectorAll(".propTotal")
+    let attribValue = []
+    values.forEach(function(element) {
+        attribValue.push(element.value)
+    })
+
+    return attribValue
+}
+
+
+function getImages () {
+    let allImages = document.querySelectorAll(".actualImage")
+    let images = []
+
+    allImages.forEach(function(element) {
+        images.push(element.getAttribute("src"))
+    })
+
+    return images
+
+}
+function sendFormData (form) {
+
+    fetch(`/dashboard/create`, {
+        method : "post",
+        headers : {
+            "content-type" : "application/json"
+        },
+        body : JSON.stringify(form)
+    }).then(res=> res.text())
+    .then((out) => {
+
+        console.log(out)
+
+    })
 
 }

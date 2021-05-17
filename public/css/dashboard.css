@@ -144,3 +144,13 @@ textarea, input {
     cursor: pointer;
 }
 
+.mainSubmitForm{
+    width: 100%;
+    color: white;
+    background-color: green;
+    font-size: 1.3rem;
+    border: 1px solid green;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
